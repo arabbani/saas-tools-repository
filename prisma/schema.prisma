@@ -15,12 +15,14 @@ enum PricingModel {
 }
 
 model Tag {
-  name String @unique @db.VarChar(30)
+  id   Int    @id @default(autoincrement()) @db.UnsignedSmallInt
+  name String @unique @db.VarChar(50)
 }
 
 model Tool {
-  name         String       @unique @db.VarChar(30)
-  description  String       @db.VarChar(400)
+  id           Int          @id @default(autoincrement()) @db.UnsignedSmallInt
+  name         String       @unique @db.VarChar(50)
+  description  String       @db.VarChar(1000)
   pricingModel PricingModel
   imageUrl     String       @db.VarChar(250)
   websiteUrl   String       @db.VarChar(250)
