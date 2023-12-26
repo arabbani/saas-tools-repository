@@ -1,4 +1,4 @@
-import { cn } from "@/lib/shadcn";
+import { cn } from "@/lib/css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
@@ -8,7 +8,7 @@ import "./globals.css";
 const fontSans = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
-})
+});
 
 export const metadata: Metadata = {
   title: "Saas Tools - Find The Exact Saas Tool For Your Needs",
@@ -23,10 +23,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn(
-          "bg-background font-sans antialiased",
-          fontSans.variable
-        )}>
+      <body
+        className={cn("bg-background font-sans antialiased", fontSans.variable)}
+      >
         {children}
         <Analytics />
         <SpeedInsights />
