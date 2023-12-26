@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 import { fontFamily } from "tailwindcss/defaultTheme";
 
-const config: Config = {
+const config = {
   darkMode: ["class"],
   content: [
     "./src/**/*.{js,jsx,ts,tsx,mdx}",
@@ -77,5 +77,4 @@ const config: Config = {
   },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
-
 export default config;
