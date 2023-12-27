@@ -1,4 +1,4 @@
-import { getSaasTools } from "@/data/tool";
+import { getSaasTools } from "@/data";
 import { SaasToolList } from "@/modules/tool";
 
 export default async function Home() {
