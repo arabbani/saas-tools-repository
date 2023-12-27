@@ -1,7 +1,12 @@
-export default function Home() {
+import { getSaasTools } from "@/data";
+import { SaasToolList } from "@/modules/tool";
+
+export default async function Home() {
+  const tools = await getSaasTools();
+
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center gap-5 p-24">
-      Saas tools
+    <main className="py-12 max-w-7xl mx-auto">
+      <SaasToolList tools={tools} />
     </main>
   );
 }
