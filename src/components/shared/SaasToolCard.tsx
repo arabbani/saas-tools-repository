@@ -1,4 +1,4 @@
-import { Tool } from "@prisma/client";
+import { SaasTool } from "@/database/schema";
 import { OpenInNewWindowIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,10 +8,10 @@ import {
   CardDescription,
   CardFooter,
   CardTitle,
-  badgeVariants
+  badgeVariants,
 } from "../ui";
 
-export function SaasToolCard({ tool }: { tool: Tool }) {
+export function SaasToolCard({ tool }: { tool: SaasTool }) {
   return (
     <Card className="overflow-clip">
       <CardContent className="grid grid-cols-10 h-44 p-0">
