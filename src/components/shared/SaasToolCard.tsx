@@ -31,8 +31,7 @@ export function SaasToolCard({ tool }: { tool: SaasTool }) {
           <CardFooter className="p-0 pt-2 flex gap-1">
             {tool.tags.split(",").map((tag) => (
               <Link
-                href="/"
-                target="_blank"
+                href={`/?type=${tag}`}
                 className={badgeVariants({ variant: "secondary" })}
                 key={tag}
               >
