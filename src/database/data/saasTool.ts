@@ -1,6 +1,6 @@
 import { db } from "../drizzle";
 
-export function getSaasTools({
+export function getSaasToolsListing({
   filter = {},
   sort = {
     order: "desc",
@@ -14,8 +14,15 @@ export function getSaasTools({
   };
 }) {
   return db.query.saasTool.findMany({
-    where: (saasTool, { like, and }) => {
-      const filters = [];
+    columns: {
+      name: true,
+      imageUrl: true,
+      websiteUrl: true,
+      excerpt: true,
+      tags: true
+    },
+    where: (saasTool, { like, and, eq }) => {
+      const filters = [eq(saasTool.published, true)];
 
       if (filter.type) {
         filters.push(like(saasTool.tags, `%${filter.type}%`));
@@ -28,6 +35,22 @@ export function getSaasTools({
         return [desc(saasTool.createdAt)];
       }
       return [asc(saasTool.createdAt)];
+    },
+  });
+}
+
+export function findSaasToolByName(name: string) {
+  return db.query.saasTool.findFirst({
+    columns: {
+      name: true,
+      imageUrl: true,
+      websiteUrl: true,
+      description: true,
+      tags: true,
+      pricingModel: true
+    },
+    where: (saasTool, { eq, and }) => {
+      return and(eq(saasTool.published, true), eq(saasTool.name, name));
     },
   });
 }
