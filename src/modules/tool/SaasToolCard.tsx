@@ -3,41 +3,33 @@ import {
   CardContent,
   CardDescription,
   CardFooter,
-  CardTitle,
-  badgeVariants,
+  CardTitle
 } from "@/components/ui";
 import { SaasTool } from "@/database/schema";
-import { OpenInNewWindowIcon } from "@radix-ui/react-icons";
+import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import Link from "next/link";
+import { SaasToolTags } from "./SaasToolTags";
 
 export function SaasToolCard({ tool }: { tool: SaasTool }) {
   return (
     <Card className="overflow-clip">
-      <CardContent className="grid grid-cols-12 h-36 lg:h-44 p-0">
-        <Link href="/" target="_blank" className="col-span-5 relative">
+      <CardContent className="grid grid-cols-12 h-36 lg:h-40 p-0">
+        <div className="col-span-5 relative">
           <Image src={tool.imageUrl} alt={tool.name} fill />
-        </Link>
-        <div className="col-span-7 p-4 flex flex-col">
-          <CardTitle className="text-link mb-2 w-max">
-            <Link href="/" target="_blank" className="flex gap-2">
+        </div>
+        <div className="col-span-7 p-3 lg:p-4 flex flex-col">
+          <CardTitle className="text-link text-sm lg:text-base hover:text-linkeffect mb-2 flex gap-3 justify-between items-center">
+            <Link href="/" className="underline hover:no-underline hyphens-auto">
               {tool.name}
-              <OpenInNewWindowIcon />
             </Link>
+            <a href={tool.websiteUrl} target="_blank">
+              <ExternalLinkIcon className="size-5" />
+            </a>
           </CardTitle>
-          <CardDescription className="grow text-xs lg:text-sm">{`${tool.description
-            .substring(0, 150)
-            .trimEnd()}...`}</CardDescription>
-          <CardFooter className="p-0 pt-2 hidden lg:flex gap-1">
-            {tool.tags.split(",").map((tag) => (
-              <Link
-                href={`/?type=${tag}`}
-                className={badgeVariants({ variant: "secondary" })}
-                key={tag}
-              >
-                {tag}
-              </Link>
-            ))}
+          <CardDescription className="grow text-pretty">{tool.excerpt}</CardDescription>
+          <CardFooter className="p-0 pt-2 hidden lg:block">
+            <SaasToolTags tags={tool.tags} />
           </CardFooter>
         </div>
       </CardContent>

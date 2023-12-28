@@ -11,6 +11,7 @@ export const saasTool = mysqlTable("saasTool", {
   id: smallint("id", { unsigned: true }).autoincrement().primaryKey(),
   name: varchar("name", { length: 50 }).unique().notNull(),
   description: varchar("description", { length: 1000 }).notNull(),
+  excerpt: varchar("excerpt", { length: 100 }).notNull(),
   pricingModel: mysqlEnum("pricingModel", [
     "Free",
     "Paid",
