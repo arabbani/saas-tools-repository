@@ -10,6 +10,7 @@ import { SaasTool } from "@/database/schema";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import Link from "next/link";
+import { SaasToolTags } from "./SaasToolTags";
 
 export function SaasToolCard({ tool }: { tool: SaasTool }) {
   return (
@@ -28,16 +29,8 @@ export function SaasToolCard({ tool }: { tool: SaasTool }) {
           <CardDescription className="grow text-xs lg:text-sm">{`${tool.description
             .substring(0, 150)
             .trimEnd()}...`}</CardDescription>
-          <CardFooter className="p-0 pt-2 hidden lg:flex gap-1">
-            {tool.tags.split(",").map((tag) => (
-              <Link
-                href={`/?type=${tag}`}
-                className={badgeVariants({ variant: "secondary" })}
-                key={tag}
-              >
-                {tag}
-              </Link>
-            ))}
+          <CardFooter className="p-0 pt-2 hidden lg:block">
+            <SaasToolTags tags={tool.tags} />
           </CardFooter>
         </div>
       </CardContent>
