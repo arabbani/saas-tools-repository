@@ -1,5 +1,5 @@
 import { SaasToolsSortBy } from "@/client-components";
-import { getSaasTools } from "@/database/data";
+import { getSaasToolsListing } from "@/database/data";
 import { SaasToolList } from "@/modules/tool";
 
 type Props = {
@@ -16,7 +16,7 @@ export default async function Home({ searchParams }: Props) {
     sortOrder = "asc";
   }
 
-  const saasTools = await getSaasTools({
+  const saasTools = await getSaasToolsListing({
     filter: {
       type: searchParams.type,
     },

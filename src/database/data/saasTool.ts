@@ -1,6 +1,6 @@
 import { db } from "../drizzle";
 
-export function getSaasTools({
+export function getSaasToolsListing({
   filter = {},
   sort = {
     order: "desc",
@@ -14,8 +14,15 @@ export function getSaasTools({
   };
 }) {
   return db.query.saasTool.findMany({
-    where: (saasTool, { like, and }) => {
-      const filters = [];
+    columns: {
+      name: true,
+      imageUrl: true,
+      websiteUrl: true,
+      excerpt: true,
+      tags: true
+    },
+    where: (saasTool, { like, and, eq }) => {
+      const filters = [eq(saasTool.published, true)];
 
       if (filter.type) {
         filters.push(like(saasTool.tags, `%${filter.type}%`));

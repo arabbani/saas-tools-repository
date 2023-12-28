@@ -5,13 +5,13 @@ import {
   CardFooter,
   CardTitle
 } from "@/components/ui";
-import { SaasTool } from "@/database/schema";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import Link from "next/link";
 import { SaasToolTags } from "./SaasToolTags";
+import { TypeSaasToolForCard } from "./utility-types";
 
-export function SaasToolCard({ tool }: { tool: SaasTool }) {
+export function SaasToolCard({ tool }: { tool: TypeSaasToolForCard }) {
   return (
     <Card className="overflow-clip">
       <CardContent className="grid grid-cols-12 h-36 lg:h-40 p-0">
@@ -20,7 +20,7 @@ export function SaasToolCard({ tool }: { tool: SaasTool }) {
         </div>
         <div className="col-span-7 p-3 lg:p-4 flex flex-col">
           <CardTitle className="text-link text-sm lg:text-base hover:text-linkeffect mb-2 flex gap-3 justify-between items-center">
-            <Link href="/" className="underline hover:no-underline hyphens-auto">
+            <Link href={`/tools/${tool.name}`} className="underline hover:no-underline hyphens-auto">
               {tool.name}
             </Link>
             <a href={tool.websiteUrl} target="_blank">
