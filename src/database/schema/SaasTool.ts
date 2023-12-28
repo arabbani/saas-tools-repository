@@ -1,10 +1,10 @@
 import {
-    boolean,
-    mysqlEnum,
-    mysqlTable,
-    smallint,
-    timestamp,
-    varchar,
+  boolean,
+  mysqlEnum,
+  mysqlTable,
+  smallint,
+  timestamp,
+  varchar,
 } from "drizzle-orm/mysql-core";
 
 export const saasTool = mysqlTable("saasTool", {
@@ -15,6 +15,7 @@ export const saasTool = mysqlTable("saasTool", {
     "Free",
     "Paid",
     "Freemium",
+    "Open Source"
   ]).notNull(),
   imageUrl: varchar("imageUrl", { length: 300 }).notNull(),
   websiteUrl: varchar("websiteUrl", { length: 300 }).notNull(),
@@ -24,4 +25,4 @@ export const saasTool = mysqlTable("saasTool", {
   tags: varchar("tags", { length: 300 }).notNull(),
 });
 
-export const PricingModelEnum = ["Free", "Paid", "Freemium"];
+export type SaasTool = typeof saasTool.$inferSelect;
