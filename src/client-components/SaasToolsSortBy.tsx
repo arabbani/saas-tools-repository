@@ -9,7 +9,7 @@ import {
 } from "@/components/ui";
 import { useRouter, useSearchParams } from "next/navigation";
 
-export function SaasToolsSortBy() {
+export function SaasToolsSortBy({sortBy = 'craeted-date-desc'}: {sortBy?: string}) {
   const params = useSearchParams();
   const router = useRouter();
 
@@ -20,7 +20,7 @@ export function SaasToolsSortBy() {
   };
 
   return (
-    <Select defaultValue="craeted-date-desc" onValueChange={updateRoute}>
+    <Select defaultValue={sortBy} onValueChange={updateRoute}>
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Sort by" />
       </SelectTrigger>
