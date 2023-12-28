@@ -19,9 +19,9 @@ export function SaasToolCard({ tool }: { tool: SaasTool }) {
           <Image src={tool.imageUrl} alt={tool.name} fill />
         </Link>
         <div className="col-span-7 p-4 flex flex-col">
-          <CardTitle className="text-link mb-2 flex justify-between">
-            <Link href="/" className="underline hover:text-muted-foreground hover:decoration-muted-foreground">{tool.name}</Link>
-            <a href={tool.websiteUrl} target="_blank" className="size-4 hover:text-muted-foreground">
+          <CardTitle className="text-link hover:text-linkeffect mb-2 flex justify-between">
+            <Link href="/" className="underline hover:no-underline ">{tool.name}</Link>
+            <a href={tool.websiteUrl} target="_blank" className="size-4">
               <ExternalLinkIcon />
             </a>
           </CardTitle>
