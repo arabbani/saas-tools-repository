@@ -26,7 +26,7 @@ export default async function Home({ searchParams }: Props) {
   });
 
   return (
-    <main className="py-12 max-w-7xl mx-auto">
+    <main className="py-12 max-w-7xl mx-2 md:mx-3 xl:mx-auto">
       <div className="mb-4 flex justify-end">
         <SaasToolsSortBy />
       </div>
