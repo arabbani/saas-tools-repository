@@ -38,3 +38,18 @@ export function getSaasToolsListing({
     },
   });
 }
+
+export function findSaasToolByName(name: string) {
+  return db.query.saasTool.findFirst({
+    columns: {
+      name: true,
+      imageUrl: true,
+      websiteUrl: true,
+      description: true,
+      tags: true
+    },
+    where: (saasTool, { eq, and }) => {
+      return and(eq(saasTool.published, true), eq(saasTool.name, name));
+    },
+  });
+}
