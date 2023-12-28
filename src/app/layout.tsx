@@ -24,9 +24,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={cn("bg-background font-sans antialiased min-h-screen", fontSans.variable)}
+        className={cn(
+          "bg-background font-sans antialiased min-h-screen",
+          fontSans.variable
+        )}
       >
-        {children}
+        <main className="py-6 max-w-7xl mx-2 md:mx-3 xl:mx-auto">
+          {children}
+        </main>
         <Analytics />
         <SpeedInsights />
       </body>
