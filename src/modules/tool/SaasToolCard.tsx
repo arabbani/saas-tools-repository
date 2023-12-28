@@ -11,7 +11,7 @@ import Link from "next/link";
 import { SaasToolTags } from "./SaasToolTags";
 import { TypeSaasToolForCard } from "./utility-types";
 
-export function SaasToolCard({ tool }: { tool: TypeSaasToolForCard }) {
+export function SaasToolCard({ tool }: { tool: Readonly<TypeSaasToolForCard> }) {
   return (
     <Card className="overflow-clip">
       <CardContent className="grid grid-cols-12 h-36 lg:h-40 p-0">
