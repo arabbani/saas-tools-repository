@@ -1,7 +1,3 @@
-import { SaasTool } from "@/database/schema";
-import { OpenInNewWindowIcon } from "@radix-ui/react-icons";
-import Image from "next/image";
-import Link from "next/link";
 import {
   Card,
   CardContent,
@@ -9,7 +5,11 @@ import {
   CardFooter,
   CardTitle,
   badgeVariants,
-} from "../ui";
+} from "@/components/ui";
+import { SaasTool } from "@/database/schema";
+import { OpenInNewWindowIcon } from "@radix-ui/react-icons";
+import Image from "next/image";
+import Link from "next/link";
 
 export function SaasToolCard({ tool }: { tool: SaasTool }) {
   return (

@@ -1,5 +1,5 @@
-import { SaasToolCard } from "@/components/shared";
 import { SaasTool } from "@/database/schema";
+import { SaasToolCard } from "./SaasToolCard";
 
 export function SaasToolList({ tools }: { tools: SaasTool[] }) {
   return (

@@ -2,9 +2,15 @@ import { db } from "../drizzle";
 
 export function getSaasTools({
   filter = {},
+  sort = {
+    order: "desc",
+  },
 }: {
-  filter: {
+  filter?: {
     type?: string;
+  };
+  sort?: {
+    order: string;
   };
 }) {
   return db.query.saasTool.findMany({
@@ -16,6 +22,12 @@ export function getSaasTools({
       }
 
       return and(...filters);
+    },
+    orderBy: (saasTool, { asc, desc }) => {
+      if (sort.order === "desc") {
+        return [desc(saasTool.createdAt)];
+      }
+      return [asc(saasTool.createdAt)];
     },
   });
 }
