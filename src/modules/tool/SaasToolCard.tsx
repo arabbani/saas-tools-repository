@@ -18,13 +18,13 @@ export function SaasToolCard({ tool }: { tool: SaasTool }) {
         <div className="col-span-5 relative">
           <Image src={tool.imageUrl} alt={tool.name} fill />
         </div>
-        <div className="col-span-7 p-4 flex flex-col">
-          <CardTitle className="text-link text-xs md:text-sm lg:text-base hover:text-linkeffect mb-2 flex gap-2 justify-between">
+        <div className="col-span-7 p-3 lg:p-4 flex flex-col">
+          <CardTitle className="text-link text-xs md:text-sm lg:text-base hover:text-linkeffect mb-2 flex gap-3 justify-between items-center">
             <Link href="/" className="underline hover:no-underline hyphens-auto">
               {tool.name}
             </Link>
-            <a href={tool.websiteUrl} target="_blank" className="size-4">
-              <ExternalLinkIcon />
+            <a href={tool.websiteUrl} target="_blank">
+              <ExternalLinkIcon className="size-4" />
             </a>
           </CardTitle>
           <CardDescription className="grow text-xs lg:text-sm text-pretty">{`${tool.description
