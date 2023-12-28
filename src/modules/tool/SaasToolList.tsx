@@ -1,10 +1,12 @@
 import { SaasToolCard } from "@/components/shared";
-import { Tool } from "@prisma/client";
+import { SaasTool } from "@/database/schema";
 
-export function SaasToolList({ tools }: { tools: Tool[] }) {
+export function SaasToolList({ tools }: { tools: SaasTool[] }) {
   return (
     <div className="grid grid-cols-2 gap-6">
-      {tools?.map(tool => <SaasToolCard key={tool.id} tool={tool} />)}
+      {tools?.map((tool) => (
+        <SaasToolCard key={tool.id} tool={tool} />
+      ))}
     </div>
   );
 }
