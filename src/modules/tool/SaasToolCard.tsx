@@ -14,7 +14,7 @@ import Link from "next/link";
 export function SaasToolCard({ tool }: { tool: SaasTool }) {
   return (
     <Card className="overflow-clip">
-      <CardContent className="grid grid-cols-12 h-36 lg:h-44 p-0">
+      <CardContent className="grid grid-cols-12 h-36 lg:h-48 p-0">
         <Link href="/" target="_blank" className="col-span-5 relative">
           <Image src={tool.imageUrl} alt={tool.name} fill />
         </Link>
