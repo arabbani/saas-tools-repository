@@ -46,7 +46,8 @@ export function findSaasToolByName(name: string) {
       imageUrl: true,
       websiteUrl: true,
       description: true,
-      tags: true
+      tags: true,
+      pricingModel: true
     },
     where: (saasTool, { eq, and }) => {
       return and(eq(saasTool.published, true), eq(saasTool.name, name));

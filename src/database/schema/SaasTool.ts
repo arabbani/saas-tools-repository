@@ -26,4 +26,6 @@ export const saasTool = mysqlTable("saasTool", {
   tags: varchar("tags", { length: 300 }).notNull(),
 });
 
+export type PricingModel = "Free" | "Paid" | "Freemium" | "Open Source";
+
 export type SaasTool = typeof saasTool.$inferSelect;
