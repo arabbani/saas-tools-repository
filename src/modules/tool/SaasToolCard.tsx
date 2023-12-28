@@ -3,8 +3,7 @@ import {
   CardContent,
   CardDescription,
   CardFooter,
-  CardTitle,
-  badgeVariants,
+  CardTitle
 } from "@/components/ui";
 import { SaasTool } from "@/database/schema";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
@@ -16,17 +15,19 @@ export function SaasToolCard({ tool }: { tool: SaasTool }) {
   return (
     <Card className="overflow-clip">
       <CardContent className="grid grid-cols-12 h-36 lg:h-48 p-0">
-        <Link href="/" target="_blank" className="col-span-5 relative">
+        <div className="col-span-5 relative">
           <Image src={tool.imageUrl} alt={tool.name} fill />
-        </Link>
+        </div>
         <div className="col-span-7 p-4 flex flex-col">
-          <CardTitle className="text-link hover:text-linkeffect mb-2 flex justify-between">
-            <Link href="/" className="underline hover:no-underline ">{tool.name}</Link>
+          <CardTitle className="text-link hover:text-linkeffect mb-2 flex gap-2 justify-between">
+            <Link href="/" className="underline hover:no-underline hyphens-auto">
+              {tool.name}
+            </Link>
             <a href={tool.websiteUrl} target="_blank" className="size-4">
               <ExternalLinkIcon />
             </a>
           </CardTitle>
-          <CardDescription className="grow text-xs lg:text-sm">{`${tool.description
+          <CardDescription className="grow text-xs lg:text-sm text-pretty">{`${tool.description
             .substring(0, 150)
             .trimEnd()}...`}</CardDescription>
           <CardFooter className="p-0 pt-2 hidden lg:block">
