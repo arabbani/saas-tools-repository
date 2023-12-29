@@ -2,6 +2,7 @@ import {
   SaasToolCategoryFilter,
   SaasToolPricingModelFilter,
 } from "@/client-components";
+import { Separator } from "@/components/ui";
 import { findSaasCategories } from "@/database/data";
 import { PricingModel } from "@/util/types";
 
@@ -19,10 +20,10 @@ export async function SaasToolsFilter({
   return (
     <div>
       <SaasToolCategoryFilter
-      className="mb-8"
         categories={categories}
         existingCategoryFilter={existingCategoryFilter}
       />
+      <Separator decorative className="my-3" />
       <SaasToolPricingModelFilter
         existingPricingModelFilter={existingPricingModelFilter}
       />

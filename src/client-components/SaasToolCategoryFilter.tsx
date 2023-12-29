@@ -43,7 +43,7 @@ export function SaasToolCategoryFilter({
   };
 
   return (
-    <div className={cn("grid grid-cols-6 gap-4", className)}>
+    <div className={cn("grid md:grid-cols-4 lg:grid-cols-6 md:gap-3", className)}>
       {categories?.map((category) => (
         <CheckboxWithLabel
           key={category.id}
