@@ -1,4 +1,4 @@
-import { SaasToolsSortBy } from "@/client-components";
+import { SaasToolsFilter, SaasToolsSortBy } from "@/client-components";
 import { getSaasToolsListing } from "@/database/data";
 import { SaasToolList } from "@/modules/tool";
 
@@ -27,6 +27,7 @@ export default async function Home({ searchParams }: Props) {
 
   return (
     <>
+      <SaasToolsFilter />
       <div className="mb-4 flex justify-end">
         <SaasToolsSortBy sortBy={searchParams.sort} />
       </div>
