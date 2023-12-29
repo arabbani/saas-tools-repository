@@ -24,10 +24,10 @@ export function SaasToolCard({ tool }: SaasToolCardProps) {
           <Image src={tool.imageUrl} alt={tool.name} fill />
         </div>
         <div className="col-span-7 p-3 lg:p-4 flex flex-col">
-          <CardTitle className="text-link text-sm lg:text-base hover:text-linkeffect mb-2 flex gap-3 justify-between items-center">
+          <CardTitle className="text-sm lg:text-base mb-2 flex gap-3 justify-between items-center">
             <Link
               href={`/tools/${tool.name}`}
-              className="underline hover:no-underline hyphens-auto"
+              className="internal-link"
             >
               {tool.name}
             </Link>
