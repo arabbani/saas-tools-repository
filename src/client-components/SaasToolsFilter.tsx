@@ -1,23 +1,48 @@
 "use client";
 
 import { PRICING_MODELS } from "@/util/constant";
-import { CheckboxWithLabel } from ".";
+import { PricingModel } from "@/util/types";
+import { useRouter, useSearchParams } from "next/navigation";
+import { CheckboxWithLabel } from "./CheckboxWithLabel";
 
 export function SaasToolsFilter() {
-  // const params = useSearchParams();
-  // const router = useRouter();
+  const params = useSearchParams();
+  const router = useRouter();
 
-  // const updateRoute = (value: string) => {
-  //   const newParams = new URLSearchParams(params.toString());
-  //   newParams.set("sort", value);
-  //   router.push(`/?${newParams.toString()}`);
-  // };
+  const handlePricingModelChange = (
+    checked: boolean,
+    pricingModel: PricingModel
+  ) => {
+    const newParams = new URLSearchParams(params.toString());
+    let existingPricingModelFilter = newParams.getAll("pricing-model");
+
+    if (checked && !existingPricingModelFilter.includes(pricingModel)) {
+      existingPricingModelFilter.push(pricingModel);
+    } else {
+      existingPricingModelFilter = existingPricingModelFilter.filter(
+        (item) => item !== pricingModel
+      );
+    }
+
+    newParams.delete("pricing-model");
+    existingPricingModelFilter.forEach((item) =>
+      newParams.append("pricing-model", item)
+    );
+    router.push(`/?${newParams.toString()}`);
+  };
 
   return (
     <div>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-4">
         {PRICING_MODELS.map((pricingModel) => (
-          <CheckboxWithLabel key={pricingModel}>{pricingModel}</CheckboxWithLabel>
+          <CheckboxWithLabel
+            key={pricingModel}
+            onCheckedChange={(checked: boolean) => {
+              handlePricingModelChange(checked, pricingModel);
+            }}
+          >
+            {pricingModel}
+          </CheckboxWithLabel>
         ))}
       </div>
     </div>
