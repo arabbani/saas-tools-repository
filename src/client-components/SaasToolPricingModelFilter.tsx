@@ -43,7 +43,7 @@ export function SaasToolPricingModelFilter({
   };
 
   return (
-    <div className="flex flex-wrap gap-4">
+    <div className="flex flex-wrap gap-4 justify-center">
       {PRICING_MODELS.map((pricingModel) => (
         <CheckboxWithLabel
           key={pricingModel}

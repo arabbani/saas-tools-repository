@@ -19,6 +19,7 @@ export async function SaasToolsFilter({
   return (
     <div>
       <SaasToolCategoryFilter
+      className="mb-8"
         categories={categories}
         existingCategoryFilter={existingCategoryFilter}
       />
