@@ -21,11 +21,11 @@ export default async function ToolDetails({ params }: Props) {
   }
 
   return (
-    <div className="max-w-5xl mx-auto grid grid-cols-12 gap-6">
-      <div className="col-span-5 relative max-h-64">
+    <div className="max-w-5xl mx-3 xl:mx-auto grid md:grid-cols-12 gap-6">
+      <div className="col-span-6 relative max-h-64">
         <Image src={saasTool.imageUrl} alt={saasTool.name} fill />
       </div>
-      <div className="col-span-7 relative">
+      <div className="col-span-6">
         <TypographyH2>{saasTool.name}</TypographyH2>
         <ExternalLink
           url={saasTool.websiteUrl}
@@ -34,7 +34,7 @@ export default async function ToolDetails({ params }: Props) {
           Website
           <ExternalLinkIcon className="size-5" />
         </ExternalLink>
-        <p className="my-3 text-pretty">{saasTool.description}</p>
+        <p className="my-3 text-pretty text-sm lg:text-base">{saasTool.description}</p>
         <p className="mb-4">
           <span className="font-medium">Pricing:</span>{" "}
           <SaasToolPricingTag pricingModel={saasTool.pricingModel} />
