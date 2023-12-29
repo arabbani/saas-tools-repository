@@ -24,7 +24,7 @@ export function SaasToolCard({ tool }: SaasToolCardProps) {
           <Image src={tool.imageUrl} alt={tool.name} fill />
         </div>
         <div className="col-span-7 p-3 lg:p-4 flex flex-col">
-          <CardTitle className="text-sm lg:text-base mb-2 flex gap-3 justify-between items-center">
+          <CardTitle className="mb-2 flex gap-3 justify-between items-center">
             <Link
               href={`/tools/${tool.name}`}
               className="internal-link"
