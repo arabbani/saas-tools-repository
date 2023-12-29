@@ -2,8 +2,10 @@ import { ExternalLink, TypographyH2 } from "@/components/custom";
 import { findSaasToolByName } from "@/database/data";
 import { SaasToolPricingBadge, SaasToolTagsBadgeLink } from "@/modules/tool";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
+import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import { redirect } from "next/navigation";
+import { cache } from "react";
 
 type Props = {
   params: {
@@ -11,10 +13,38 @@ type Props = {
   };
 };
 
+const getData = cache(async (name: string) => {
+  const data = await findSaasToolByName(name);
+  return data;
+});
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const saasTool = await getData(decodeURIComponent(params.toolname));
+ 
+  // optionally access and extend (rather than replace) parent metadata
+  const previousImages = (await parent).openGraph?.images || [];
+
+  if (!saasTool) {
+    redirect("/");
+  }
+ 
+  return {
+    title: saasTool.name,
+    description: saasTool.description,
+    openGraph: {
+      images: [saasTool.imageUrl, ...previousImages],
+    },
+  }
+}
+
+
+
 export default async function ToolDetails({ params }: Props) {
-  const saasTool = await findSaasToolByName(
-    decodeURIComponent(params.toolname)
-  );
+  const saasTool = await getData(decodeURIComponent(params.toolname));
+  
 
   if (!saasTool) {
     redirect("/");
