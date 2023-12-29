@@ -1,5 +1,5 @@
 import { Badge, BadgeProps } from "@/components/ui";
-import { PricingModel } from "@/database/schema";
+import { PricingModel } from "@/util/types";
 import clsx from "clsx";
 
 interface SaasToolPricingBadgeProps extends React.HTMLAttributes<HTMLElement> {

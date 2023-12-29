@@ -1,6 +1,6 @@
 import { ExternalLink, TypographyH2 } from "@/components/custom";
 import { findSaasToolByName } from "@/database/data";
-import { SaasToolPricingBadge, SaasToolTagsBadgeLink } from "@/modules/tool";
+import { SaasToolPricingBadge, SaasToolTagLinkBadges } from "@/modules/tool";
 import { openGraphMetadataDefault } from "@/util/site-metadata";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import { Metadata, ResolvingMetadata } from "next";
@@ -67,7 +67,7 @@ export default async function ToolDetails({ params }: Props) {
           <span className="font-medium">Pricing:</span>{" "}
           <SaasToolPricingBadge pricingModel={saasTool.pricingModel} />
         </p>
-        <SaasToolTagsBadgeLink tags={saasTool.tags} />
+        <SaasToolTagLinkBadges tags={saasTool.tags} />
       </div>
     </div>
   );

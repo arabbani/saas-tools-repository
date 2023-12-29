@@ -10,7 +10,7 @@ import { TypeSaasToolForCard } from "@/util/types";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import Link from "next/link";
-import { SaasToolTagsBadgeLink } from "./SaasToolTagsBadgeLink";
+import { SaasToolTagLinkBadges } from "./SaasToolTagLinkBadges";
 
 interface SaasToolCardProps extends React.HTMLAttributes<HTMLElement> {
   tool: Readonly<TypeSaasToolForCard>;
@@ -24,7 +24,7 @@ export function SaasToolCard({ tool }: SaasToolCardProps) {
           <Image src={tool.imageUrl} alt={tool.name} fill />
         </div>
         <div className="col-span-7 p-3 lg:p-4 flex flex-col">
-          <CardTitle className="text-sm lg:text-base mb-2 flex gap-3 justify-between items-center">
+          <CardTitle className="mb-2 flex gap-3 justify-between items-center">
             <Link
               href={`/tools/${tool.name}`}
               className="internal-link"
@@ -40,7 +40,7 @@ export function SaasToolCard({ tool }: SaasToolCardProps) {
             {tool.excerpt}
           </CardDescription>
           <CardFooter className="p-0 pt-2 hidden lg:block">
-            <SaasToolTagsBadgeLink tags={tool.tags} />
+            <SaasToolTagLinkBadges tags={tool.tags} />
           </CardFooter>
         </div>
       </CardContent>
