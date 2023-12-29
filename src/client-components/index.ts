@@ -1,3 +1,3 @@
 export * from "./CheckboxWithLabel";
-export * from "./SaasToolsFilter";
+export * from "./PricingModelFilter";
 export * from "./SaasToolsSortBy";

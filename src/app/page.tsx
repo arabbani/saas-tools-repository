@@ -1,6 +1,6 @@
-import { SaasToolsFilter, SaasToolsSortBy } from "@/client-components";
+import { SaasToolsSortBy } from "@/client-components";
 import { getSaasToolsListing } from "@/database/data";
-import { SaasToolList } from "@/modules/tool";
+import { SaasToolList, SaasToolsFilter } from "@/modules/tool";
 import { PricingModel } from "@/util/types";
 
 type Props = {
@@ -27,7 +27,7 @@ export default async function Home({ searchParams }: Props) {
       order: sortOrder,
     },
   });
-  
+
   return (
     <>
       <SaasToolsFilter pricingModelFilter={searchParams.pricingModel} />

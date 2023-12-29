@@ -9,7 +9,7 @@ type Props = {
   pricingModelFilter?: PricingModel | PricingModel[];
 };
 
-export function SaasToolsFilter({ pricingModelFilter }: Props) {
+export function PricingModelFilter({ pricingModelFilter }: Props) {
   const params = useSearchParams();
   const router = useRouter();
 
@@ -45,22 +45,19 @@ export function SaasToolsFilter({ pricingModelFilter }: Props) {
     router.push(`/?${newParams.toString()}`);
   };
 
-
   return (
-    <div>
-      <div className="flex flex-wrap gap-4">
-        {PRICING_MODELS.map((pricingModel) => (
-          <CheckboxWithLabel
-            key={pricingModel}
-            onCheckedChange={(checked: boolean) => {
-              handlePricingModelChange(checked, pricingModel);
-            }}
-            checked={selectedPricingModelFilter.includes(pricingModel)}
-          >
-            {pricingModel}
-          </CheckboxWithLabel>
-        ))}
-      </div>
+    <div className="flex flex-wrap gap-4">
+      {PRICING_MODELS.map((pricingModel) => (
+        <CheckboxWithLabel
+          key={pricingModel}
+          onCheckedChange={(checked: boolean) => {
+            handlePricingModelChange(checked, pricingModel);
+          }}
+          checked={selectedPricingModelFilter.includes(pricingModel)}
+        >
+          {pricingModel}
+        </CheckboxWithLabel>
+      ))}
     </div>
   );
 }
