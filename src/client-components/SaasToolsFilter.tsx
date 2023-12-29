@@ -5,9 +5,23 @@ import { PricingModel } from "@/util/types";
 import { useRouter, useSearchParams } from "next/navigation";
 import { CheckboxWithLabel } from "./CheckboxWithLabel";
 
-export function SaasToolsFilter() {
+type Props = {
+  pricingModelFilter?: PricingModel | PricingModel[];
+};
+
+export function SaasToolsFilter({ pricingModelFilter }: Props) {
   const params = useSearchParams();
   const router = useRouter();
+
+  let selectedPricingModelFilter: PricingModel[] = [];
+
+  if (pricingModelFilter) {
+    if (!Array.isArray(pricingModelFilter)) {
+      selectedPricingModelFilter = [pricingModelFilter];
+    } else {
+      selectedPricingModelFilter = pricingModelFilter;
+    }
+  }
 
   const handlePricingModelChange = (
     checked: boolean,
@@ -31,6 +45,7 @@ export function SaasToolsFilter() {
     router.push(`/?${newParams.toString()}`);
   };
 
+
   return (
     <div>
       <div className="flex flex-wrap gap-4">
@@ -40,6 +55,7 @@ export function SaasToolsFilter() {
             onCheckedChange={(checked: boolean) => {
               handlePricingModelChange(checked, pricingModel);
             }}
+            checked={selectedPricingModelFilter.includes(pricingModel)}
           >
             {pricingModel}
           </CheckboxWithLabel>

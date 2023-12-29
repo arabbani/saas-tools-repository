@@ -27,10 +27,10 @@ export default async function Home({ searchParams }: Props) {
       order: sortOrder,
     },
   });
-
+  
   return (
     <>
-      <SaasToolsFilter />
+      <SaasToolsFilter pricingModelFilter={searchParams.pricingModel} />
       <div className="mb-4 flex justify-end">
         <SaasToolsSortBy sortBy={searchParams.sort} />
       </div>

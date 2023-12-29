@@ -31,14 +31,14 @@ export function getSaasToolsListing({
       }
 
       if (filter.pricingModel) {
-        let pricingModelsFilter: PricingModel[] = [];
+        let pricingModelFilter: PricingModel[] = [];
 
         if (!Array.isArray(filter.pricingModel)) {
-          pricingModelsFilter = [filter.pricingModel];
+          pricingModelFilter = [filter.pricingModel];
         } else {
-          pricingModelsFilter = filter.pricingModel;
+          pricingModelFilter = filter.pricingModel;
         }
-        filters.push(inArray(saasTool.pricingModel, pricingModelsFilter));
+        filters.push(inArray(saasTool.pricingModel, pricingModelFilter));
       }
 
       return and(...filters);
