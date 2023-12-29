@@ -23,7 +23,7 @@ export default async function ToolDetails({ params }: Props) {
   return (
     <div className="max-w-5xl mx-3 xl:mx-auto grid md:grid-cols-12 gap-6">
       <div className="col-span-6 relative h-52 lg:h-72">
-        <Image src={saasTool.imageUrl} alt={saasTool.name} fill />
+        <Image src={saasTool.imageUrl} alt={saasTool.name} fill priority />
       </div>
       <div className="col-span-6">
         <TypographyH2>{saasTool.name}</TypographyH2>
