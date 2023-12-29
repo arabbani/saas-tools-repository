@@ -9,7 +9,7 @@ type Props = {
   pricingModelFilter?: PricingModel | PricingModel[];
 };
 
-export function PricingModelFilter({ pricingModelFilter }: Props) {
+export function SaasToolPricingModelFilter({ pricingModelFilter }: Props) {
   const params = useSearchParams();
   const router = useRouter();
 

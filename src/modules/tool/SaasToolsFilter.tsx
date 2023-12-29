@@ -1,4 +1,4 @@
-import { PricingModelFilter } from "@/client-components";
+import { SaasToolPricingModelFilter } from "@/client-components";
 import { PricingModel } from "@/util/types";
 
 type Props = {
@@ -8,7 +8,7 @@ type Props = {
 export function SaasToolsFilter({ pricingModelFilter }: Props) {
   return (
     <div>
-      <PricingModelFilter pricingModelFilter={pricingModelFilter} />
+      <SaasToolPricingModelFilter pricingModelFilter={pricingModelFilter} />
     </div>
   );
 }
