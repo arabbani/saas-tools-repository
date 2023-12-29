@@ -3,7 +3,7 @@
 import { Saasategory } from "@/database/schema";
 import { cn } from "@/lib/css";
 import { useRouter, useSearchParams } from "next/navigation";
-import { CheckboxWithLabel } from ".";
+import { CheckboxWithLabel } from "./CheckboxWithLabel";
 
 interface Props extends React.HTMLAttributes<HTMLElement> {
   existingCategoryFilter: string[];
