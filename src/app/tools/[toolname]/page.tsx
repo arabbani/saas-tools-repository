@@ -40,12 +40,9 @@ export async function generateMetadata(
   }
 }
 
-
-
 export default async function ToolDetails({ params }: Props) {
   const saasTool = await getData(decodeURIComponent(params.toolname));
   
-
   if (!saasTool) {
     redirect("/");
   }

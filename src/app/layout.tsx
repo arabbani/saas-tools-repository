@@ -14,6 +14,10 @@ export const metadata: Metadata = {
   title: "Saas Tools - Find The Exact Saas Tool For Your Needs",
   description:
     "Saas Tools Collects & Organizes All The Best Saas Tools So You Can Find Them Easily In One Place",
+  other: {
+    google: "nositelinkssearchbox",
+    googlebot: "notranslate"
+  }
 };
 
 export default function RootLayout({
