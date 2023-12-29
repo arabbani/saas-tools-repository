@@ -11,7 +11,10 @@ const fontSans = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Saas Tools - Find The Exact Saas Tool For Your Needs",
+  title: {
+    default: "Saas Tools - Find The Exact Saas Tool For Your Needs",
+    template: "%s | Saas Tools"
+  },
   description:
     "Saas Tools Collects & Organizes All The Best Saas Tools So You Can Find Them Easily In One Place",
   other: {
