@@ -2,6 +2,7 @@ import {
   SaasToolCategoryFilter,
   SaasToolPricingModelFilter,
 } from "@/client-components";
+import { findSaasCategories } from "@/database/data";
 import { PricingModel } from "@/util/types";
 
 type Props = {
@@ -9,13 +10,18 @@ type Props = {
   existingCategoryFilter: string[];
 };
 
-export function SaasToolsFilter({
+export async function SaasToolsFilter({
   existingPricingModelFilter,
   existingCategoryFilter,
 }: Props) {
+  const categories = await findSaasCategories();
+
   return (
     <div>
-      <SaasToolCategoryFilter existingCategoryFilter={existingCategoryFilter} />
+      <SaasToolCategoryFilter
+        categories={categories}
+        existingCategoryFilter={existingCategoryFilter}
+      />
       <SaasToolPricingModelFilter
         existingPricingModelFilter={existingPricingModelFilter}
       />

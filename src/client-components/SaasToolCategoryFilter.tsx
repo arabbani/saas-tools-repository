@@ -1,18 +1,20 @@
 "use client";
 
+import { Saasategory } from "@/database/schema";
 import { useRouter, useSearchParams } from "next/navigation";
+import { CheckboxWithLabel } from ".";
 
 type Props = {
   existingCategoryFilter: string[];
+  categories: Saasategory[];
 };
 
 export function SaasToolCategoryFilter({
   existingCategoryFilter,
+  categories,
 }: Props) {
   const params = useSearchParams();
   const router = useRouter();
-
-  // const saasCategories = await findSaasCategories();
 
   const handleCategoryChange = (checked: boolean, category: string) => {
     const newParams = new URLSearchParams(params.toString());
@@ -40,7 +42,7 @@ export function SaasToolCategoryFilter({
 
   return (
     <div className="flex flex-wrap gap-4">
-      {/* {saasCategories?.map((category) => (
+      {categories?.map((category) => (
         <CheckboxWithLabel
           key={category.id}
           onCheckedChange={(checked: boolean) => {
@@ -50,7 +52,7 @@ export function SaasToolCategoryFilter({
         >
           {category.name}
         </CheckboxWithLabel>
-      ))} */}
+      ))}
     </div>
   );
 }
