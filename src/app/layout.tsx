@@ -1,4 +1,5 @@
 import { cn } from "@/lib/css";
+import { openGraphMetadataDefault } from "@/util/site-metadata";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
@@ -11,9 +12,24 @@ const fontSans = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Saas Tools - Find The Exact Saas Tool For Your Needs",
+  title: {
+    default: "Saas Tools - Find The Exact Saas Tool For Your Needs",
+    template: "%s | Saas Tools",
+  },
   description:
     "Saas Tools Collects & Organizes All The Best Saas Tools So You Can Find Them Easily In One Place",
+  applicationName: "Saas Tools",
+  other: {
+    google: "nositelinkssearchbox",
+    googlebot: "notranslate",
+  },
+  openGraph: {
+    ...openGraphMetadataDefault,
+  },
+  twitter: {
+    site: "@arifRabbani1993",
+    creator: "@arifRabbani1993",
+  },
 };
 
 export default function RootLayout({

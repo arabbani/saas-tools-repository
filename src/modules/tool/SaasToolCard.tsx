@@ -6,7 +6,7 @@ import {
   CardFooter,
   CardTitle,
 } from "@/components/ui";
-import { TypeSaasToolForCard } from "@/utility-types";
+import { TypeSaasToolForCard } from "@/util/types";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import Link from "next/link";

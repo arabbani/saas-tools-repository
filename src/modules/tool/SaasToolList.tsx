@@ -1,4 +1,4 @@
-import { TypeSaasToolForCard } from "@/utility-types";
+import { TypeSaasToolForCard } from "@/util/types";
 import { SaasToolCard } from "./SaasToolCard";
 
 interface SaasToolListProps extends React.HTMLAttributes<HTMLElement> {
