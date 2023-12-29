@@ -6,11 +6,11 @@ import {
   CardFooter,
   CardTitle,
 } from "@/components/ui";
+import { TypeSaasToolForCard } from "@/utility-types";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import Link from "next/link";
 import { SaasToolTags } from "./SaasToolTags";
-import { TypeSaasToolForCard } from "./utility-types";
 
 interface SaasToolCardProps extends React.HTMLAttributes<HTMLElement> {
   tool: Readonly<TypeSaasToolForCard>;

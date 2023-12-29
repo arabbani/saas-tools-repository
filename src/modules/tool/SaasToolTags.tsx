@@ -1,9 +1,11 @@
-import {
-    badgeVariants
-} from "@/components/ui";
+import { badgeVariants } from "@/components/ui";
 import Link from "next/link";
 
-export function SaasToolTags({ tags }: { tags: string }) {
+interface SaasToolTagsProps extends React.HTMLAttributes<HTMLElement> {
+  tags: string;
+}
+
+export function SaasToolTags({ tags }: SaasToolTagsProps) {
   return (
     <div className="flex flex-wrap gap-2">
       {tags.split(",").map((tag) => (
