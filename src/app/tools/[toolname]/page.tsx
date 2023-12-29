@@ -1,6 +1,7 @@
 import { ExternalLink, TypographyH2 } from "@/components/custom";
 import { findSaasToolByName } from "@/database/data";
 import { SaasToolPricingBadge, SaasToolTagsBadgeLink } from "@/modules/tool";
+import { openGraphMetadataDefault } from "@/site-metadata";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
@@ -35,7 +36,11 @@ export async function generateMetadata(
     title: saasTool.name,
     description: saasTool.description,
     openGraph: {
-      images: [saasTool.imageUrl, ...previousImages],
+      ...openGraphMetadataDefault,
+      images: [{
+        url: saasTool.imageUrl,
+        alt: saasTool.name, 
+      }, ...previousImages],
     },
   }
 }
