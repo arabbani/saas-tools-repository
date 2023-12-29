@@ -75,3 +75,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .internal-link {
+    @apply text-link hover:text-linkeffect underline hover:no-underline hyphens-auto;
+  }
+}

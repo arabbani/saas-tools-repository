@@ -1,15 +1,21 @@
 "use client";
 
 import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
 } from "@/components/ui";
 import { useRouter, useSearchParams } from "next/navigation";
 
-export function SaasToolsSortBy({sortBy = 'craeted-date-desc'}: {sortBy?: string}) {
+interface SaasToolsSortByProps extends React.HTMLAttributes<HTMLElement> {
+  sortBy?: string;
+}
+
+export function SaasToolsSortBy({
+  sortBy = "craeted-date-desc",
+}: SaasToolsSortByProps) {
   const params = useSearchParams();
   const router = useRouter();
 

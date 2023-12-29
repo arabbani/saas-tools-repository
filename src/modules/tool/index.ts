@@ -1,3 +1,3 @@
 export * from "./SaasToolList";
-export * from './SaasToolTags';
-export * from './SaasToolPricingTag';
+export * from "./SaasToolPricingBadge";
+export * from "./SaasToolTagsBadgeLink";

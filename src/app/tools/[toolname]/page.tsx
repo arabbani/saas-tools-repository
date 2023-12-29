@@ -1,8 +1,11 @@
-import { TypographyH2 } from "@/components/custom";
+import { ExternalLink, TypographyH2 } from "@/components/custom";
 import { findSaasToolByName } from "@/database/data";
-import { SaasToolPricingTag, SaasToolTags } from "@/modules/tool";
+import { SaasToolPricingBadge, SaasToolTagsBadgeLink } from "@/modules/tool";
+import { ExternalLinkIcon } from "@radix-ui/react-icons";
+import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import { redirect } from "next/navigation";
+import { cache } from "react";
 
 type Props = {
   params: {
@@ -10,28 +13,63 @@ type Props = {
   };
 };
 
+const getData = cache(async (name: string) => {
+  const data = await findSaasToolByName(name);
+  return data;
+});
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const saasTool = await getData(decodeURIComponent(params.toolname));
+ 
+  // optionally access and extend (rather than replace) parent metadata
+  const previousImages = (await parent).openGraph?.images || [];
+
+  if (!saasTool) {
+    redirect("/");
+  }
+ 
+  return {
+    title: saasTool.name,
+    description: saasTool.description,
+    openGraph: {
+      images: [saasTool.imageUrl, ...previousImages],
+    },
+  }
+}
+
+
+
 export default async function ToolDetails({ params }: Props) {
-  const saasTool = await findSaasToolByName(
-    decodeURIComponent(params.toolname)
-  );
+  const saasTool = await getData(decodeURIComponent(params.toolname));
+  
 
   if (!saasTool) {
     redirect("/");
   }
 
   return (
-    <div className="max-w-5xl mx-auto grid grid-cols-12 gap-6">
-      <div className="col-span-5 relative max-h-64">
-        <Image src={saasTool.imageUrl} alt={saasTool.name} fill />
+    <div className="max-w-5xl mx-3 xl:mx-auto grid md:grid-cols-12 gap-6">
+      <div className="col-span-6 relative h-52 lg:h-72">
+        <Image src={saasTool.imageUrl} alt={saasTool.name} fill priority />
       </div>
-      <div className="col-span-7 relative">
+      <div className="col-span-6">
         <TypographyH2>{saasTool.name}</TypographyH2>
-        <p className="my-4 text-pretty">{saasTool.description}</p>
+        <ExternalLink
+          url={saasTool.websiteUrl}
+          className="flex gap-1 items-center my-2"
+        >
+          Website
+          <ExternalLinkIcon className="size-5" />
+        </ExternalLink>
+        <p className="my-3 text-pretty text-sm lg:text-base">{saasTool.description}</p>
         <p className="mb-4">
           <span className="font-medium">Pricing:</span>{" "}
-          <SaasToolPricingTag pricingModel={saasTool.pricingModel} />
+          <SaasToolPricingBadge pricingModel={saasTool.pricingModel} />
         </p>
-        <SaasToolTags tags={saasTool.tags} />
+        <SaasToolTagsBadgeLink tags={saasTool.tags} />
       </div>
     </div>
   );
