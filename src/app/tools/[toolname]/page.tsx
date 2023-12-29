@@ -1,6 +1,6 @@
 import { ExternalLink, TypographyH2 } from "@/components/custom";
 import { findSaasToolByName } from "@/database/data";
-import { SaasToolPricingTag, SaasToolTags } from "@/modules/tool";
+import { SaasToolPricingBadge, SaasToolTags } from "@/modules/tool";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import { redirect } from "next/navigation";
@@ -37,7 +37,7 @@ export default async function ToolDetails({ params }: Props) {
         <p className="my-3 text-pretty text-sm lg:text-base">{saasTool.description}</p>
         <p className="mb-4">
           <span className="font-medium">Pricing:</span>{" "}
-          <SaasToolPricingTag pricingModel={saasTool.pricingModel} />
+          <SaasToolPricingBadge pricingModel={saasTool.pricingModel} />
         </p>
         <SaasToolTags tags={saasTool.tags} />
       </div>

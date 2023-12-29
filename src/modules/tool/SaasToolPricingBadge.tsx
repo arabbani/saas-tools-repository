@@ -2,11 +2,11 @@ import { Badge, BadgeProps } from "@/components/ui";
 import { PricingModel } from "@/database/schema";
 import clsx from "clsx";
 
-interface SaasToolPricingTagProps extends React.HTMLAttributes<HTMLElement> {
+interface SaasToolPricingBadgeProps extends React.HTMLAttributes<HTMLElement> {
   pricingModel: PricingModel;
 }
 
-export function SaasToolPricingTag({ pricingModel }: SaasToolPricingTagProps) {
+export function SaasToolPricingBadge({ pricingModel }: SaasToolPricingBadgeProps) {
   let badgeVariant: Pick<BadgeProps, "variant">["variant"] = "default";
 
   switch (pricingModel) {
