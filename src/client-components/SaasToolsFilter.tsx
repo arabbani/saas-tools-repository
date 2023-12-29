@@ -14,7 +14,7 @@ export function SaasToolsFilter() {
     pricingModel: PricingModel
   ) => {
     const newParams = new URLSearchParams(params.toString());
-    let existingPricingModelFilter = newParams.getAll("pricing-model");
+    let existingPricingModelFilter = newParams.getAll("pricingModel");
 
     if (checked && !existingPricingModelFilter.includes(pricingModel)) {
       existingPricingModelFilter.push(pricingModel);
@@ -24,9 +24,9 @@ export function SaasToolsFilter() {
       );
     }
 
-    newParams.delete("pricing-model");
+    newParams.delete("pricingModel");
     existingPricingModelFilter.forEach((item) =>
-      newParams.append("pricing-model", item)
+      newParams.append("pricingModel", item)
     );
     router.push(`/?${newParams.toString()}`);
   };

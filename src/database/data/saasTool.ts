@@ -1,3 +1,4 @@
+import { PricingModel } from "@/util/types";
 import { db } from "../drizzle";
 
 export function getSaasToolsListing({
@@ -8,6 +9,7 @@ export function getSaasToolsListing({
 }: {
   filter?: {
     type?: string;
+    pricingModel?: PricingModel | PricingModel[];
   };
   sort?: {
     order: string;
@@ -19,13 +21,24 @@ export function getSaasToolsListing({
       imageUrl: true,
       websiteUrl: true,
       excerpt: true,
-      tags: true
+      tags: true,
     },
-    where: (saasTool, { like, and, eq }) => {
+    where: (saasTool, { like, and, eq, inArray }) => {
       const filters = [eq(saasTool.published, true)];
 
       if (filter.type) {
         filters.push(like(saasTool.tags, `%${filter.type}%`));
+      }
+
+      if (filter.pricingModel) {
+        let pricingModelsFilter: PricingModel[] = [];
+
+        if (!Array.isArray(filter.pricingModel)) {
+          pricingModelsFilter = [filter.pricingModel];
+        } else {
+          pricingModelsFilter = filter.pricingModel;
+        }
+        filters.push(inArray(saasTool.pricingModel, pricingModelsFilter));
       }
 
       return and(...filters);
@@ -47,7 +60,7 @@ export function findSaasToolByName(name: string) {
       websiteUrl: true,
       description: true,
       tags: true,
-      pricingModel: true
+      pricingModel: true,
     },
     where: (saasTool, { eq, and }) => {
       return and(eq(saasTool.published, true), eq(saasTool.name, name));
