@@ -10,6 +10,7 @@ export function getSaasToolsListing({
   filter?: {
     type?: string;
     pricingModel?: PricingModel[];
+    category?: string[];
   };
   sort?: {
     order: string;
@@ -32,6 +33,10 @@ export function getSaasToolsListing({
 
       if (filter.pricingModel && filter.pricingModel.length) {
         filters.push(inArray(saasTool.pricingModel, filter.pricingModel));
+      }
+
+      if (filter.category && filter.category.length) {
+        filters.push(inArray(saasTool.tags, filter.category));
       }
 
       return and(...filters);
