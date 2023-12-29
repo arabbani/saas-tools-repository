@@ -28,6 +28,7 @@ export function SaasToolCard({ tool }: SaasToolCardProps) {
             <Link
               href={`/tools/${tool.name}`}
               className="internal-link"
+              prefetch={false}
             >
               {tool.name}
             </Link>

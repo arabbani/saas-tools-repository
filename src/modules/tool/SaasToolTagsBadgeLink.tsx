@@ -14,6 +14,7 @@ export function SaasToolTagsBadgeLink({ tags }: SaasToolTagsBadgeLinkProps) {
           href={`/?type=${tag}`}
           className={cn("underline", badgeVariants({ variant: "secondary" }))}
           key={tag}
+          prefetch={false}
         >
           {tag}
         </Link>
