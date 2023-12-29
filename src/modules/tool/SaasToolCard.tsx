@@ -10,7 +10,7 @@ import { TypeSaasToolForCard } from "@/utility-types";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import Link from "next/link";
-import { SaasToolTags } from "./SaasToolTags";
+import { SaasToolTagsBadgeLink } from "./SaasToolTagsBadgeLink";
 
 interface SaasToolCardProps extends React.HTMLAttributes<HTMLElement> {
   tool: Readonly<TypeSaasToolForCard>;
@@ -39,7 +39,7 @@ export function SaasToolCard({ tool }: SaasToolCardProps) {
             {tool.excerpt}
           </CardDescription>
           <CardFooter className="p-0 pt-2 hidden lg:block">
-            <SaasToolTags tags={tool.tags} />
+            <SaasToolTagsBadgeLink tags={tool.tags} />
           </CardFooter>
         </div>
       </CardContent>
