@@ -1,6 +1,7 @@
-import { TypographyH2 } from "@/components/custom";
+import { ExternalLink, TypographyH2 } from "@/components/custom";
 import { findSaasToolByName } from "@/database/data";
 import { SaasToolPricingTag, SaasToolTags } from "@/modules/tool";
+import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 
@@ -26,7 +27,14 @@ export default async function ToolDetails({ params }: Props) {
       </div>
       <div className="col-span-7 relative">
         <TypographyH2>{saasTool.name}</TypographyH2>
-        <p className="my-4 text-pretty">{saasTool.description}</p>
+        <ExternalLink
+          url={saasTool.websiteUrl}
+          className="flex gap-1 items-center my-2"
+        >
+          Website
+          <ExternalLinkIcon className="size-5" />
+        </ExternalLink>
+        <p className="my-3 text-pretty">{saasTool.description}</p>
         <p className="mb-4">
           <span className="font-medium">Pricing:</span>{" "}
           <SaasToolPricingTag pricingModel={saasTool.pricingModel} />
