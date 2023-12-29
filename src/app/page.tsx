@@ -7,7 +7,7 @@ type Props = {
   searchParams: {
     type?: string;
     sort?: string;
-    pricingModel?: PricingModel | PricingModel[];
+    pricingModel?: string;
   };
 };
 
@@ -18,10 +18,16 @@ export default async function Home({ searchParams }: Props) {
     sortOrder = "asc";
   }
 
+  let existingPricingModelFilter: PricingModel[] = [];
+
+  if (searchParams.pricingModel) {
+    existingPricingModelFilter = searchParams.pricingModel.split(',') as PricingModel[];
+  }
+
   const saasTools = await getSaasToolsListing({
     filter: {
       type: searchParams.type,
-      pricingModel: searchParams.pricingModel,
+      pricingModel: existingPricingModelFilter,
     },
     sort: {
       order: sortOrder,
@@ -30,7 +36,7 @@ export default async function Home({ searchParams }: Props) {
 
   return (
     <>
-      <SaasToolsFilter pricingModelFilter={searchParams.pricingModel} />
+      <SaasToolsFilter existingPricingModelFilter={existingPricingModelFilter} />
       <div className="mb-4 flex justify-end">
         <SaasToolsSortBy sortBy={searchParams.sort} />
       </div>

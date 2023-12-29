@@ -9,7 +9,7 @@ export function getSaasToolsListing({
 }: {
   filter?: {
     type?: string;
-    pricingModel?: PricingModel | PricingModel[];
+    pricingModel?: PricingModel[];
   };
   sort?: {
     order: string;
@@ -30,15 +30,8 @@ export function getSaasToolsListing({
         filters.push(like(saasTool.tags, `%${filter.type}%`));
       }
 
-      if (filter.pricingModel) {
-        let pricingModelFilter: PricingModel[] = [];
-
-        if (!Array.isArray(filter.pricingModel)) {
-          pricingModelFilter = [filter.pricingModel];
-        } else {
-          pricingModelFilter = filter.pricingModel;
-        }
-        filters.push(inArray(saasTool.pricingModel, pricingModelFilter));
+      if (filter.pricingModel && filter.pricingModel.length) {
+        filters.push(inArray(saasTool.pricingModel, filter.pricingModel));
       }
 
       return and(...filters);

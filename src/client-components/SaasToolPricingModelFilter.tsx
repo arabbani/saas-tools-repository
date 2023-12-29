@@ -6,42 +6,39 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { CheckboxWithLabel } from "./CheckboxWithLabel";
 
 type Props = {
-  pricingModelFilter?: PricingModel | PricingModel[];
+  existingPricingModelFilter: PricingModel[];
 };
 
-export function SaasToolPricingModelFilter({ pricingModelFilter }: Props) {
+export function SaasToolPricingModelFilter({
+  existingPricingModelFilter,
+}: Props) {
   const params = useSearchParams();
   const router = useRouter();
-
-  let selectedPricingModelFilter: PricingModel[] = [];
-
-  if (pricingModelFilter) {
-    if (!Array.isArray(pricingModelFilter)) {
-      selectedPricingModelFilter = [pricingModelFilter];
-    } else {
-      selectedPricingModelFilter = pricingModelFilter;
-    }
-  }
 
   const handlePricingModelChange = (
     checked: boolean,
     pricingModel: PricingModel
   ) => {
     const newParams = new URLSearchParams(params.toString());
-    let existingPricingModelFilter = newParams.getAll("pricingModel");
+    let selectedPricingModelFilter: string[] = [];
 
-    if (checked && !existingPricingModelFilter.includes(pricingModel)) {
-      existingPricingModelFilter.push(pricingModel);
+    if (newParams.get("pricingModel")) {
+      selectedPricingModelFilter = newParams.get("pricingModel")!.split(",");
+    }
+
+    if (checked && !selectedPricingModelFilter.includes(pricingModel)) {
+      selectedPricingModelFilter.push(pricingModel);
     } else {
-      existingPricingModelFilter = existingPricingModelFilter.filter(
+      selectedPricingModelFilter = selectedPricingModelFilter.filter(
         (item) => item !== pricingModel
       );
     }
 
     newParams.delete("pricingModel");
-    existingPricingModelFilter.forEach((item) =>
-      newParams.append("pricingModel", item)
-    );
+
+    if (selectedPricingModelFilter.length) {
+      newParams.set("pricingModel", selectedPricingModelFilter.toString());
+    }
     router.push(`/?${newParams.toString()}`);
   };
 
@@ -53,7 +50,7 @@ export function SaasToolPricingModelFilter({ pricingModelFilter }: Props) {
           onCheckedChange={(checked: boolean) => {
             handlePricingModelChange(checked, pricingModel);
           }}
-          checked={selectedPricingModelFilter.includes(pricingModel)}
+          checked={existingPricingModelFilter.includes(pricingModel)}
         >
           {pricingModel}
         </CheckboxWithLabel>
