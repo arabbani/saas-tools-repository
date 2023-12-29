@@ -49,7 +49,7 @@ export default async function Home({ searchParams }: Props) {
         existingPricingModelFilter={existingPricingModelFilter}
         existingCategoryFilter={existingCategoryFilter}
       />
-      <div className="mb-4 flex justify-end">
+      <div className="my-4 flex justify-end">
         <SaasToolsSortBy sortBy={searchParams.sort} />
       </div>
       <SaasToolList tools={saasTools} />
