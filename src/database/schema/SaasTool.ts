@@ -1,3 +1,4 @@
+import { PRICING_MODELS } from "@/util/constant";
 import {
   boolean,
   mysqlEnum,
@@ -12,12 +13,7 @@ export const saasTool = mysqlTable("saasTool", {
   name: varchar("name", { length: 50 }).unique().notNull(),
   description: varchar("description", { length: 1000 }).notNull(),
   excerpt: varchar("excerpt", { length: 100 }).notNull(),
-  pricingModel: mysqlEnum("pricingModel", [
-    "Free",
-    "Paid",
-    "Freemium",
-    "Open Source"
-  ]).notNull(),
+  pricingModel: mysqlEnum("pricingModel", PRICING_MODELS).notNull(),
   imageUrl: varchar("imageUrl", { length: 300 }).notNull(),
   websiteUrl: varchar("websiteUrl", { length: 300 }).notNull(),
   upvotes: smallint("upvotes", { unsigned: true }).default(0).notNull(),

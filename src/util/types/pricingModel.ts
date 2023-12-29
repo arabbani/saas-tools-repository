@@ -1,1 +1,3 @@
-export type PricingModel = "Free" | "Paid" | "Freemium" | "Open Source";
+import { PRICING_MODELS } from "../constant";
+
+export type PricingModel = (typeof PRICING_MODELS)[number];
