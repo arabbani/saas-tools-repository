@@ -16,6 +16,10 @@ type Props = {
 
 const getData = cache(async (name: string) => {
   const data = await findSaasToolByName(name);
+
+  if (!data) {
+    redirect("/");
+  }
   return data;
 });
 
@@ -28,10 +32,6 @@ export async function generateMetadata(
   // optionally access and extend (rather than replace) parent metadata
   const previousImages = (await parent).openGraph?.images || [];
 
-  if (!saasTool) {
-    redirect("/");
-  }
- 
   return {
     title: saasTool.name,
     description: saasTool.description,
@@ -47,10 +47,6 @@ export async function generateMetadata(
 
 export default async function ToolDetails({ params }: Props) {
   const saasTool = await getData(decodeURIComponent(params.toolname));
-  
-  if (!saasTool) {
-    redirect("/");
-  }
 
   return (
     <div className="max-w-5xl mx-3 xl:mx-auto grid md:grid-cols-12 gap-6">
