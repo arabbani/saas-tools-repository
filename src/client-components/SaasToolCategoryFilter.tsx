@@ -50,7 +50,7 @@ export function SaasToolCategoryFilter({
           onCheckedChange={(checked: boolean) => {
             handleCategoryChange(checked, category.name);
           }}
-          checked={existingCategoryFilter.includes(category.name)}
+          defaultChecked={existingCategoryFilter.includes(category.name)}
         >
           {category.name}
         </CheckboxWithLabel>
