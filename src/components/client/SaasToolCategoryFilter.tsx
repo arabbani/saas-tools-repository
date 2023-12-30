@@ -1,7 +1,6 @@
 "use client";
 
 import { Saasategory } from "@/database/schema";
-import { cn } from "@/lib/css";
 import { useRouter, useSearchParams } from "next/navigation";
 import { CheckboxWithLabel } from "./CheckboxWithLabel";
 
@@ -13,7 +12,6 @@ interface Props extends React.HTMLAttributes<HTMLElement> {
 export function SaasToolCategoryFilter({
   existingCategoryFilter,
   categories,
-  className,
 }: Props) {
   const params = useSearchParams();
   const router = useRouter();
@@ -43,7 +41,7 @@ export function SaasToolCategoryFilter({
   };
 
   return (
-    <div className={cn("grid md:grid-cols-4 lg:grid-cols-6 md:gap-x-3 md:gap-y-4", className)}>
+    <div className="grid md:grid-cols-4 lg:grid-cols-6 md:gap-x-3 md:gap-y-4">
       {categories?.map((category) => (
         <CheckboxWithLabel
           key={category.id}
