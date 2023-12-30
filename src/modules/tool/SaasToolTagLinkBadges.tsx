@@ -11,7 +11,7 @@ export function SaasToolTagLinkBadges({ tags }: SaasToolTagLinkBadgesProps) {
     <div className="flex flex-wrap gap-2">
       {tags.split(",").map((tag) => (
         <Link
-          href={`/?type=${tag}`}
+          href={`/?category=${tag}`}
           className={cn("underline", badgeVariants({ variant: "secondary" }))}
           key={tag}
           prefetch={false}

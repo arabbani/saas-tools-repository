@@ -5,7 +5,6 @@ import { PricingModel } from "@/util/types";
 
 type Props = {
   searchParams: {
-    type?: string;
     sort?: string;
     pricingModel?: string;
     category?: string;
@@ -34,7 +33,6 @@ export default async function Home({ searchParams }: Props) {
 
   const saasTools = await getSaasToolsListing({
     filter: {
-      type: searchParams.type,
       pricingModel: existingPricingModelFilter,
       category: existingCategoryFilter,
     },
