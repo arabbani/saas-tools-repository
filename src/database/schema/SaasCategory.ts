@@ -5,4 +5,4 @@ export const saasCategory = mysqlTable("saasCategory", {
   name: varchar("name", { length: 50 }).unique().notNull(),
 });
 
-export type Saasategory = typeof saasCategory.$inferSelect;
+export type SaasCategory = typeof saasCategory.$inferSelect;

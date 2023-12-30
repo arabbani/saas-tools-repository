@@ -1,12 +1,12 @@
 "use client";
 
-import { Saasategory } from "@/database/schema";
+import { SaasCategory } from "@/database/schema";
 import { useRouter, useSearchParams } from "next/navigation";
 import { CheckboxWithLabel } from "./CheckboxWithLabel";
 
 interface Props extends React.HTMLAttributes<HTMLElement> {
   existingCategoryFilter: string[];
-  categories: Saasategory[];
+  categories: SaasCategory[];
 }
 
 export function SaasToolCategoryFilter({
