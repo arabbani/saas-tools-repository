@@ -1,4 +1,4 @@
-import { SaasToolsSortBy } from "@/client-components";
+import { SaasToolsSortBy } from "@/components/client";
 import { getSaasToolsListing } from "@/database/data";
 import { SaasToolList, SaasToolsFilter } from "@/modules/tool";
 import { PricingModel } from "@/util/types";

@@ -1,7 +1,7 @@
 import {
   SaasToolCategoryFilter,
   SaasToolPricingModelFilter,
-} from "@/client-components";
+} from "@/components/client";
 import { Separator } from "@/components/ui";
 import { findSaasCategories } from "@/database/data";
 import { PricingModel } from "@/util/types";
