@@ -70,7 +70,7 @@ export async function SaasToolsFilterClientComponentsAggregator({
     } else {
       newFilter = newFilter.filter((item) => item !== key);
     }
-    
+
     if (kind === "pricingModel") {
       selectedFilter.current[kind] = newFilter as PricingModel[];
     } else {
@@ -86,11 +86,11 @@ export async function SaasToolsFilterClientComponentsAggregator({
         handleValueChange={handleCategoryChange}
       />
       <Separator decorative className="my-3" />
+      <div className="flex justify-between">
         <SaasToolPricingModelFilter
           existingPricingModelFilter={existingPricingModelFilter}
           handleValueChange={handlePricingModelChange}
         />
-      <div className="flex justify-between">
         <Button onClick={applyFilter}>Apply</Button>
       </div>
     </div>
