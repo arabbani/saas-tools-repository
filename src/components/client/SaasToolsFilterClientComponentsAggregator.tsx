@@ -16,7 +16,7 @@ type Props = {
   categories: SaasCategory[];
 };
 
-export async function SaasToolsFilterClientComponentsAggregator({
+export function SaasToolsFilterClientComponentsAggregator({
   existingPricingModelFilter,
   existingCategoryFilter,
   categories,

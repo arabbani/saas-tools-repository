@@ -78,6 +78,6 @@
 
 @layer utilities {
   .internal-link {
-    @apply text-link hover:text-linkeffect underline hover:no-underline hyphens-auto;
+    @apply text-link hover:text-linkeffect underline underline-offset-2 hover:no-underline hyphens-auto;
   }
 }
