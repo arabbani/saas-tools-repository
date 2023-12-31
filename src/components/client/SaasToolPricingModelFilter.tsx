@@ -50,7 +50,7 @@ export function SaasToolPricingModelFilter({
           onCheckedChange={(checked: boolean) => {
             handlePricingModelChange(checked, pricingModel);
           }}
-          defaultChecked={existingPricingModelFilter.includes(pricingModel)}
+          checked={existingPricingModelFilter.includes(pricingModel)}
         >
           {pricingModel}
         </CheckboxWithLabel>
