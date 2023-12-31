@@ -1,6 +1,6 @@
 import { Badge, BadgeProps } from "@/components/ui";
+import { cn } from "@/lib/css";
 import { PricingModel } from "@/util/types";
-import clsx from "clsx";
 
 interface SaasToolPricingBadgeProps extends React.HTMLAttributes<HTMLElement> {
   pricingModel: PricingModel;
@@ -21,7 +21,7 @@ export function SaasToolPricingBadge({ pricingModel }: SaasToolPricingBadgeProps
   return (
     <Badge
       variant={badgeVariant}
-      className={clsx({
+      className={cn({
         "bg-green-900 hover:bg-green-900/80": pricingModel === "Open Source",
       })}
     >

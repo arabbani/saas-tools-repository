@@ -14,7 +14,7 @@ export function CheckboxWithLabel({
   const id = useId();
 
   return (
-    <div className="flex items-center space-x-2 cursor-pointer">
+    <div className="flex items-center space-x-2">
       <Checkbox id={id} {...props} />
       <Label htmlFor={id} className="cursor-pointer">{children}</Label>
     </div>

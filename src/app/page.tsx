@@ -1,11 +1,10 @@
-import { SaasToolsSortBy } from "@/client-components";
+import { SaasToolsSortBy } from "@/components/client";
 import { getSaasToolsListing } from "@/database/data";
 import { SaasToolList, SaasToolsFilter } from "@/modules/tool";
 import { PricingModel } from "@/util/types";
 
 type Props = {
   searchParams: {
-    type?: string;
     sort?: string;
     pricingModel?: string;
     category?: string;
@@ -34,7 +33,6 @@ export default async function Home({ searchParams }: Props) {
 
   const saasTools = await getSaasToolsListing({
     filter: {
-      type: searchParams.type,
       pricingModel: existingPricingModelFilter,
       category: existingCategoryFilter,
     },
