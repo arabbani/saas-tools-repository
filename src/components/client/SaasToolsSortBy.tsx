@@ -31,7 +31,7 @@ export function SaasToolsSortBy({
         <SelectValue placeholder="Sort by" />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="craeted-date-desc">Newest</SelectItem>
+        <SelectItem value="craeted-date-desc">Latest</SelectItem>
         <SelectItem value="craeted-date-asc">Oldest</SelectItem>
       </SelectContent>
     </Select>
