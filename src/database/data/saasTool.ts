@@ -13,7 +13,7 @@ export function getSaasToolsListing({
     category?: string[];
   };
   sort?: {
-    order: string;
+    order?: string;
   };
 }) {
   return db.query.saasTool.findMany({

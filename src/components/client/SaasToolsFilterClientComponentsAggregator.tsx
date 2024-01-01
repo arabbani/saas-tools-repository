@@ -3,6 +3,7 @@
 import {
   SaasToolCategoryFilter,
   SaasToolPricingModelFilter,
+  SaasToolsSortBy,
 } from "@/components/client";
 import { Button, Separator } from "@/components/ui";
 import { SaasCategory } from "@/database/schema";
@@ -14,12 +15,14 @@ type Props = {
   existingPricingModelFilter: PricingModel[];
   existingCategoryFilter: string[];
   categories: SaasCategory[];
+  sortOrder?: string;
 };
 
 export function SaasToolsFilterClientComponentsAggregator({
   existingPricingModelFilter,
   existingCategoryFilter,
   categories,
+  sortOrder,
 }: Props) {
   const params = useSearchParams();
   const router = useRouter();
@@ -27,6 +30,7 @@ export function SaasToolsFilterClientComponentsAggregator({
   const selectedFilter = useRef({
     category: existingCategoryFilter,
     pricingModel: existingPricingModelFilter,
+    sortOrder: sortOrder,
   });
 
   const handlePricingModelChange = (
@@ -55,6 +59,10 @@ export function SaasToolsFilterClientComponentsAggregator({
         selectedFilter.current.pricingModel.toString()
       );
     }
+
+    if (selectedFilter.current.sortOrder) {
+      newParams.set("sortOrder", selectedFilter.current.sortOrder);
+    }
     router.push(`/?${newParams.toString()}`);
   };
 
@@ -78,8 +86,12 @@ export function SaasToolsFilterClientComponentsAggregator({
     }
   };
 
+  const handleSortOrderChange = (value: string) => {
+    selectedFilter.current.sortOrder = value;
+  };
+
   return (
-    <div>
+    <div className="mb-4">
       <SaasToolCategoryFilter
         categories={categories}
         existingCategoryFilter={existingCategoryFilter}
@@ -91,7 +103,13 @@ export function SaasToolsFilterClientComponentsAggregator({
           existingPricingModelFilter={existingPricingModelFilter}
           handleValueChange={handlePricingModelChange}
         />
-        <Button onClick={applyFilter}>Apply</Button>
+        <div className="flex gap-4">
+          <SaasToolsSortBy
+            sortOrder={sortOrder}
+            handleValueChange={handleSortOrderChange}
+          />
+          <Button onClick={applyFilter}>Apply</Button>
+        </div>
       </div>
     </div>
   );

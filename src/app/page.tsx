@@ -1,25 +1,19 @@
-import { SaasToolsSortBy } from "@/components/client";
 import { getSaasToolsListing } from "@/database/data";
 import { SaasToolList, SaasToolsFilter } from "@/modules/tool";
 import { PricingModel } from "@/util/types";
 
 type Props = {
   searchParams: {
-    sort?: string;
+    sortOrder?: string;
     pricingModel?: string;
     category?: string;
   };
 };
 
 export default async function Home({ searchParams }: Props) {
-  let sortOrder = "desc";
-
-  if (searchParams.sort === "craeted-date-asc") {
-    sortOrder = "asc";
-  }
-
   let existingPricingModelFilter: PricingModel[] = [];
   let existingCategoryFilter: string[] = [];
+  const sortOrder = searchParams.sortOrder ?? "desc";
 
   if (searchParams.pricingModel) {
     existingPricingModelFilter = searchParams.pricingModel.split(
@@ -30,6 +24,7 @@ export default async function Home({ searchParams }: Props) {
   if (searchParams.category) {
     existingCategoryFilter = searchParams.category.split(",");
   }
+  console.log("PAGE ", searchParams.sortOrder);
 
   const saasTools = await getSaasToolsListing({
     filter: {
@@ -46,10 +41,8 @@ export default async function Home({ searchParams }: Props) {
       <SaasToolsFilter
         existingPricingModelFilter={existingPricingModelFilter}
         existingCategoryFilter={existingCategoryFilter}
+        sortOrder={sortOrder}
       />
-      <div className="my-4 flex justify-end">
-        <SaasToolsSortBy sortBy={searchParams.sort} />
-      </div>
       <SaasToolList tools={saasTools} />
     </>
   );
