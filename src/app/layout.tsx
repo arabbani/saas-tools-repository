@@ -45,6 +45,7 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
+        {/* <Header /> */}
         <main className="py-6 max-w-7xl mx-2 md:mx-3 xl:mx-auto">
           {children}
         </main>
