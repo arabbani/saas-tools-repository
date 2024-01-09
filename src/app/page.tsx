@@ -24,7 +24,6 @@ export default async function Home({ searchParams }: Props) {
   if (searchParams.category) {
     existingCategoryFilter = searchParams.category.split(",");
   }
-  console.log("PAGE ", searchParams.sortOrder);
 
   const saasTools = await getSaasToolsListing({
     filter: {
